@@ -324,7 +324,7 @@ class MemCache
       begin
         values = cache_get_multi server, keys_for_server_str
         values.each do |key, value|
-          results[cache_keys[key]] = raw ? value : Marshal.load(value)
+          results[key] = raw ? value : Marshal.load(value)
         end
       rescue IndexError => e
         # Ignore this server and try the others
